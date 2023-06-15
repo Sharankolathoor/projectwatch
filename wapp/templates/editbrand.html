@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">BRANDS</h4>
+                  <form class="forms-sample" method="post" action="{% url 'updatebrand' brandid=bdata.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Brand Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="bn" value="{{bdata.bname}}">
+                    </div>
+                      <div class="form-group row">
+                      <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Brand Image</label>
+                      <div class="col-sm-9">
+                        <input type="file" class="form-control" id="exampleInputPassword2" placeholder="Image" fdprocessedid="esi40r" name="bi" value="{{bdata.bimage}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="des">{{bdata.desc}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}

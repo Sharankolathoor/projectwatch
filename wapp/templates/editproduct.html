@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-8 grid-margin stretch-card">
+                <div class="card-body">
+                  <h4 class="card-title">PRODUCTS</h4>
+                  <form class="forms-sample" method="post" action="{% url 'updateproduct' p_id=product.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label>Choose Brand</label>
+                          <div>
+                               <select  class="col-sm-9" name="br">
+                                <option>Select category</option>
+                                <option>{{product.brand}}</option>
+                                {% for j in bdata %}
+                                <option>{{j.bname}}</option>
+                                {% endfor %}
+                                </select>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name" name="pn" value="{{product.pname}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Descrption</label>
+<!--                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Descrption" name="des">-->
+                        <textarea  class="form-control" name="des" style="height:300px">{{product.des}}
+                        </textarea>
+                    </div>
+                  <div class="form-group">
+                  <label for="">Product Image</label>
+                  <input type="file" class="form-control" placeholder="Image" name="pi" value="{{product.pimage}}">
+                </div>
+                      <div class="form-group">
+                      <label for="">Price</label>
+                      <input type="text" class="form-control" id="" placeholder="Rs." name="pz" value="{{product.price}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>>-->
+<!--          {% if messages %}-->
+<!--              {% for i in messages %}-->
+<!--                  {% if i.tags == 'warning'%}-->
+<!--                    <script >-->
+<!--                      swal('{{i}}', '','warning');-->
+<!--                    </script>-->
+<!--                  {% elif i.tags == 'error'%}-->
+<!--                     <script >-->
+<!--                      swal('{{i}}','','error');-->
+<!--                    </script>-->
+<!--                  {% else %}-->
+<!--                     <script >-->
+<!--                      swal('{{i}}','','success');-->
+<!--                    </script>-->
+<!--                  {% endif %}-->
+<!--              {% endfor %}-->
+<!--          {% endif %}-->
+
+</body>
+</html>
+{% endblock %}
